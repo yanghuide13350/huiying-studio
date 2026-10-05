@@ -4,6 +4,20 @@
 
 本项目基于 [chatfire-AI/huobao-drama](https://github.com/chatfire-AI/huobao-drama) 的 **v4.0.7** 改造，保留上游署名和许可。上游源码基线为 `f2b4d866e9490f4f71ed4bf14fb7f12648ce1021`；本项目的修改说明见 [CHANGELOG.md](CHANGELOG.md)。
 
+## 下载软件
+
+到 [Releases 下载页面](https://github.com/yanghuide13350/huiying-studio/releases/latest) 选择安装包：
+
+| 系统 | 下载文件 |
+| --- | --- |
+| Apple 芯片 Mac | 带 `arm64` 的 `.dmg` |
+| Intel Mac | 不带 `arm64` 的 `.dmg` |
+| Windows 64 位 | `Setup` 安装程序 `.exe` |
+
+首次使用请在设置中配置自己的模型服务和 API 密钥。当前安装包未配置 Apple 公证与 Windows 代码签名，系统可能显示安全提示。
+
+版本标签 `v*` 会触发 GitHub Actions，在各自系统构建安装包；全部构建成功后发布到 Releases，并提供 SHA256 校验文件。手动触发工作流只生成构建产物。Windows 和 Intel Mac 的实机操作验收状态见发布说明。
+
 ## 已整理的功能
 
 - 视频制作页点击画面打开大预览，预览可连续切换上一个、下一个镜头；按 ESC 关闭。

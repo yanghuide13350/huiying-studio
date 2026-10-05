@@ -28,7 +28,7 @@ export default async function afterPack(context) {
     if (!fs.existsSync(p)) throw new Error(`打包产物缺少 bin/${name}（检查 prepare-resources 与 \${os} 目录命名）`)
   }
 
-  if (context.electronPlatformName !== 'win32') return
+  if (context.electronPlatformName !== 'win32' || process.platform === 'win32') return
   if (!fs.existsSync(WIN_BIN)) {
     throw new Error(
       `缺少 win32 better-sqlite3 预编译: ${WIN_BIN}\n` +

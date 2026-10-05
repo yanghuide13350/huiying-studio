@@ -47,22 +47,22 @@ if (!ffmpegPath || !ffprobePath || !fs.existsSync(ffmpegPath) || !fs.existsSync(
   console.error('ffmpeg-static/ffprobe-static 二进制缺失，请重新 npm install（或配置 FFMPEG_BINARIES_URL 镜像）')
   process.exit(1)
 }
-fs.copyFileSync(ffmpegPath, path.join(binMac, 'ffmpeg'))
-fs.copyFileSync(ffprobePath, path.join(binMac, 'ffprobe'))
-fs.chmodSync(path.join(binMac, 'ffmpeg'), 0o755)
-fs.chmodSync(path.join(binMac, 'ffprobe'), 0o755)
-console.log('resources/bin-mac ✓')
-
-// 3b. Windows 二进制（打 win 包用；不打 win 包时缺失不报错，仅提示）
-const winBinDir = path.join(DESKTOP, 'build', 'win-bin')
-const ffmpegWin = path.join(winBinDir, 'ffmpeg.exe')
-const ffprobeWinSrc = path.join(path.dirname(req.resolve('ffprobe-static/package.json')), 'bin', 'win32', 'x64', 'ffprobe.exe')
-if (!fs.existsSync(ffmpegWin)) {
-  console.warn('提示: 缺少 build/win-bin/ffmpeg.exe，Windows 包将无法内置 ffmpeg。' +
-    '获取: https://github.com/eugeneware/ffmpeg-static/releases/download/b6.0/ffmpeg-win32-x64')
-}
-if (fs.existsSync(ffmpegWin) && fs.existsSync(ffprobeWinSrc)) {
-  fs.copyFileSync(ffmpegWin, path.join(binWin, 'ffmpeg.exe'))
-  fs.copyFileSync(ffprobeWinSrc, path.join(binWin, 'ffprobe.exe'))
-  console.log('resources/bin-win ✓')
+if (process.platform === 'win32') {
+  fs.copyFileSync(ffmpegPath, path.join(binWin, 'ffmpeg.exe'))
+  fs.copyFileSync(ffprobePath, path.join(binWin, 'ffprobe.exe'))
+  console.log('resources/bin-win ✓ (native Windows)')
+} else {
+  fs.copyFileSync(ffmpegPath, path.join(binMac, 'ffmpeg'))
+  fs.copyFileSync(ffprobePath, path.join(binMac, 'ffprobe'))
+  fs.chmodSync(path.join(binMac, 'ffmpeg'), 0o755)
+  fs.chmodSync(path.join(binMac, 'ffprobe'), 0o755)
+  console.log('resources/bin-mac ✓')
+  // Optional binaries for cross-building Windows on macOS.
+  const ffmpegWin = path.join(DESKTOP, 'build', 'win-bin', 'ffmpeg.exe')
+  const ffprobeWin = path.join(path.dirname(req.resolve('ffprobe-static/package.json')), 'bin', 'win32', 'x64', 'ffprobe.exe')
+  if (fs.existsSync(ffmpegWin) && fs.existsSync(ffprobeWin)) {
+    fs.copyFileSync(ffmpegWin, path.join(binWin, 'ffmpeg.exe'))
+    fs.copyFileSync(ffprobeWin, path.join(binWin, 'ffprobe.exe'))
+    console.log('resources/bin-win ✓ (cross-build)')
+  }
 }
