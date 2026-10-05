@@ -1,0 +1,14 @@
+{
+  "name": "huiying-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "慧影工坊 — AI 剧本、素材与视频制作工作台",
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:desktop": "cd desktop && npm run dev",
+    "build:frontend": "cd frontend && npm run generate",
+    "dist": "cd desktop && npm run dist"
+  },
+  "license": "CC-BY-NC-SA-4.0"
+}

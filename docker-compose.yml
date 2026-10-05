@@ -1,0 +1,15 @@
+# 慧影工坊本地构建，数据保存在独立命名卷。
+services:
+  app:
+    image: huiying-studio:local
+    build:
+      context: .
+      args:
+        HUOBAO_VERSION: 1.0.0
+    ports:
+      - "5679:5679"
+    volumes:
+      - huiying-data:/app/data
+    restart: unless-stopped
+volumes:
+  huiying-data:
