@@ -25,6 +25,7 @@ npmRebuild: true
 # win 交叉打包修复：宿主机（mac）下载的原生预编译是 Mach-O，afterPack 换入官方 win32 .node
 afterPack: scripts/after-pack.mjs
 mac:
+  artifactName: Huiying-Studio-${version}-mac-${arch}.${ext}
   target:
     - target: dmg
       arch: [arm64, x64]
@@ -46,6 +47,7 @@ dmg:
     - { x: 410, y: 180, type: link, path: /Applications }
     - { x: 270, y: 330, type: file, path: assets/如提示已损坏请双击我.command }
 win:
+  artifactName: Huiying-Studio-${version}-windows-${arch}-setup.${ext}
   target:
     - target: nsis
       arch: [x64]

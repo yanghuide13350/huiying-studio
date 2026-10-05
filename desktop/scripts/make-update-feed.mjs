@@ -48,9 +48,9 @@ function sha256(file) {
 // 平台键（与更新器 process.platform-process.arch 一致）→ 产物文件名
 // （electron-builder 的 mac zip 命名带 -mac 后缀）
 const targets = [
-  { key: 'darwin-arm64', file: `${pkg.productName}-${version}-arm64-mac.zip` },
-  { key: 'darwin-x64', file: `${pkg.productName}-${version}-mac.zip` },
-  { key: 'win32-x64', file: `${pkg.productName} Setup ${version}.exe` },
+  { key: 'darwin-arm64', file: `Huiying-Studio-${version}-mac-arm64.zip` },
+  { key: 'darwin-x64', file: `Huiying-Studio-${version}-mac-x64.zip` },
+  { key: 'win32-x64', file: `Huiying-Studio-${version}-windows-x64-setup.exe` },
 ]
 
 const platforms = {}

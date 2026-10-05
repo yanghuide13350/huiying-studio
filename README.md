@@ -11,8 +11,8 @@
 | 系统 | 下载文件 |
 | --- | --- |
 | Apple 芯片 Mac | 带 `arm64` 的 `.dmg` |
-| Intel Mac | 不带 `arm64` 的 `.dmg` |
-| Windows 64 位 | `Setup` 安装程序 `.exe` |
+| Intel Mac | 带 `x64` 的 `.dmg` |
+| Windows 64 位 | `setup` 安装程序 `.exe` |
 
 首次使用请在设置中配置自己的模型服务和 API 密钥。当前安装包未配置 Apple 公证与 Windows 代码签名，系统可能显示安全提示。
 
